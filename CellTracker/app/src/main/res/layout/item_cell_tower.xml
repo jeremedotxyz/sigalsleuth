@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/card_bg"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Row 1: Type badge + signal + registered -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvNetworkType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LTE"
+                android:textSize="10sp"
+                android:textColor="#FFFFFF"
+                android:fontFamily="monospace"
+                android:background="@drawable/badge_bg"
+                android:backgroundTint="@color/lte_blue"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:letterSpacing="0.08" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvOperator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Operator"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="monospace"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/tvMccMnc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MCC — · MNC —"
+                    android:textSize="9sp"
+                    android:textColor="@color/text_secondary"
+                    android:fontFamily="monospace" />
+            </LinearLayout>
+
+            <!-- Signal value -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvSignalBars"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="▂▄▆█"
+                        android:textSize="10sp"
+                        android:textColor="@color/signal_good"
+                        android:fontFamily="monospace" />
+
+                    <TextView
+                        android:id="@+id/tvSignalDbm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-78 dBm"
+                        android:textSize="13sp"
+                        android:textColor="@color/signal_good"
+                        android:fontFamily="monospace"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="end">
+
+                    <ImageView
+                        android:id="@+id/ivRegistered"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:src="@drawable/ic_dot"
+                        android:tint="@color/scan_green"
+                        android:layout_marginEnd="3dp" />
+
+                    <TextView
+                        android:id="@+id/tvRegisteredLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SERVING"
+                        android:textSize="8sp"
+                        android:textColor="@color/text_secondary"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.06" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Signal progress bar -->
+        <ProgressBar
+            android:id="@+id/pbSignal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:max="100"
+            android:progress="60"
+            android:progressDrawable="@drawable/signal_progress"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Row 2: Cell identity grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/tvCellId"
+                    style="@style/CellDataLabel" android:text="CID: —"/>
+                <TextView android:id="@+id/tvLac"
+                    style="@style/CellDataLabel" android:text="LAC: —"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/tvPci"
+                    style="@style/CellDataLabel" android:text="PCI: —"/>
+                <TextView android:id="@+id/tvEarfcn"
+                    style="@style/CellDataLabel" android:text="ARFCN: —"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/tvBandwidth"
+                    style="@style/CellDataLabel" android:text="BW: —"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- LTE/NR extras -->
+        <LinearLayout
+            android:id="@+id/layoutLteExtras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:paddingTop="6dp"
+            android:visibility="gone">
+
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginBottom="6dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutLteNrValues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:id="@+id/tvRsrp"
+                style="@style/CellDataLabel" android:text="RSRP: —"
+                android:layout_weight="1" android:layout_width="0dp"/>
+            <TextView android:id="@+id/tvRsrq"
+                style="@style/CellDataLabel" android:text="RSRQ: —"
+                android:layout_weight="1" android:layout_width="0dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

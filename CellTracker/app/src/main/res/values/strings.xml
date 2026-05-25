@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cell Tracker</string>
+    <string name="permission_rationale">Cell Tracker needs Location and Phone State permissions to read cell tower data from your device's radio. No data is sent anywhere — everything stays on-device.</string>
+    <string name="no_towers">No towers visible. Ensure permissions are granted and try scanning again.</string>
+    <string name="scan_start">Start scanning for cell towers</string>
+    <string name="scan_stop">Stop active scan</string>
+    <string name="bg_service_on">Background scanning active</string>
+    <string name="bg_service_off">Background scanning stopped</string>
+</resources>
